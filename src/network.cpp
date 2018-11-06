@@ -38,7 +38,7 @@ size_t Network:: random_connect(const double& mean)
 	
 	for (unsigned int i(0); i< values.size(); ++i) {
 		nb_connect = RNG.poisson(mean);
-		if (nb_connect > (values.size() -1)) nb_connect = (values.size() -1 );
+		if (nb_connect > (values.size() -1)) nb_connect = (values.size() -1);
 		random_nodes.clear();
 		random_nodes.resize(nb_connect);
 		RNG.uniform_int(random_nodes, 0, values.size() -1);
@@ -68,6 +68,7 @@ size_t Network:: set_values(const std::vector<double>& new_val)
 	
 	else if (values.size() == new_val.size()) {
 		values.clear();
+		
 		for(unsigned int i(0); i< new_val.size(); ++i)
 		{
 			values.push_back(new_val[i]);
@@ -86,7 +87,7 @@ size_t Network:: set_values(const std::vector<double>& new_val)
 size_t Network:: size() const
 {
 	return values.size();
-	}
+}
 
 size_t Network:: degree(const size_t &_n) const
 {
@@ -98,7 +99,7 @@ double Network:: value(const size_t &_n) const
 {	
 	if (values.size() > _n) return values[_n];		
 	else return 0.0;		//arbitrary
-	}
+}
 
 std::vector<double> Network:: sorted_values() const
 {
