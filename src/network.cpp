@@ -59,27 +59,17 @@ size_t Network:: random_connect(const double& mean)
 size_t Network:: set_values(const std::vector<double>& new_val)
 {
 	if (new_val.size() < values.size()) {
-		for(unsigned int i(0); i< new_val.size(); ++i)
-		{
-			values[i] = new_val[i];
-		}
+		for(unsigned int i(0); i< new_val.size(); ++i) values[i] = new_val[i];
 		return new_val.size();
 	}
 	
 	else if (values.size() == new_val.size()) {
 		values.clear();
-		
-		for(unsigned int i(0); i< new_val.size(); ++i)
-		{
-			values.push_back(new_val[i]);
-		}	
+		for(unsigned int i(0); i< new_val.size(); ++i) values.push_back(new_val[i]);
 		return values.size();
 	}
 	else {
-		for(unsigned int i(0); i< values.size(); ++i)
-		{
-			values[i] = new_val[i];
-		}
+		for(unsigned int i(0); i< values.size(); ++i) values[i] = new_val[i];
 		return values.size();
 	}
 }
@@ -92,13 +82,13 @@ size_t Network:: size() const
 size_t Network:: degree(const size_t &_n) const
 {
 	if (values.size() > _n) return links.count(_n);   
-	else return 0;
+	else throw (std::string ("Error: node not found.")) ;	
 }
 
 double Network:: value(const size_t &_n) const
 {	
 	if (values.size() > _n) return values[_n];		
-	else return 0.0;		//arbitrary
+	else throw (std::string ("Error: node not found.")) ;		
 }
 
 std::vector<double> Network:: sorted_values() const
